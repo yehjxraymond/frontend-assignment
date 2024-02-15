@@ -15,27 +15,14 @@ const handler: Handler = async (
       },
     };
   }
-
-  const id = event.queryStringParameters?.id;
-  if (id) {
-    const movie = movies.find((movie) => movie.id === id);
-    if (movie) {
-      return {
-        statusCode: 200,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(movie),
-      };
-    }
-    return {
-      statusCode: 404,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message: "Not found" }),
-    };
-  }
+  // your server-side functionality
+  return {
+    statusCode: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(movies.map(({ synopsisFull, ...movie }) => movie)),
+  };
 };
 
 export { handler };
