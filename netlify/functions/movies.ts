@@ -15,14 +15,24 @@ const handler: Handler = async (
       },
     };
   }
-  // your server-side functionality
-  return {
-    statusCode: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(movies.map(({ synopsisFull, ...movie }) => movie)),
-  };
-};
 
+  const random = Math.random();
+  if (random < 0.2) {
+    return {
+      statusCode: 500,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ error: "Server error" }),
+    };
+  } else {
+    return {
+      statusCode: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(movies.map(({ synopsisFull, ...movie }) => movie)),
+    };
+  }
+};
 export { handler };

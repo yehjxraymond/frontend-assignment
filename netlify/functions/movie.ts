@@ -20,13 +20,24 @@ const handler: Handler = async (
   if (id) {
     const movie = movies.find((movie) => movie.id === id);
     if (movie) {
-      return {
-        statusCode: 200,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(movie),
-      };
+      const random = Math.random();
+      if (random < 0.15) {
+        return {
+          statusCode: 500,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ error: "Server error" }),
+        };
+      } else {
+        return {
+          statusCode: 200,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(movie),
+        };
+      }
     }
     return {
       statusCode: 404,
