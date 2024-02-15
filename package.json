@@ -1,0 +1,16 @@
+{
+  "name": "frontend-assignment",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Nest TypeScript starter repository",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "@netlify/functions": "^2.6.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.1.3"
+  }
+}
